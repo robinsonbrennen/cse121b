@@ -18,7 +18,7 @@ function add(number1, number2) {
 function addNumbers() {
     let addend1 = parseFloat(document.querySelector("#addend1").value);
     let addend2 = parseFloat(document.querySelector("#addend2").value);
-    document.querySelector("#sum").value = sum(addend1, addend2);
+    document.querySelector("#sum").value = add(addend1, addend2);
 }
 
 document.querySelector("#addNumbers").addEventListener("click", addNumbers);
