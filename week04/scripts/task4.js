@@ -24,27 +24,27 @@ let myInfo = {
 myInfo.placesLived = [
     {
         place: "Missoula, MT",
-        length: 1
+        length: 1,
     },
     {
         place: "Vernal, UT",
-        length: 1
+        length: 1,
     },
     {
         place: "Coeur d'alene, ID",
-        length: 3
+        length: 3,
     },
     {
         place: "Hanna, WY",
-        length: 3
+        length: 3,
     },
     {
         place: "Beaver Dam, AZ",
-        length: 2
+        length: 2,
     },
     {
         place: "Star Valley, WY",
-        length: 14
+        length: 14,
     },
 ]
 // Step 8: For each property, add appropriate values as strings
