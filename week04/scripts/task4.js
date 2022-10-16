@@ -60,7 +60,7 @@ document.querySelector("#name").querySelector = myInfo.name;
 photo = document.querySelector("#photo");
 photo.setAttribute("src", `images/${myInfo.photo}`);
 // Step 3: Assign the value of the name property as the alt attribute of the HTML <img> element with an ID of photo
-photo.setAttribute("alt", "Picture of ${myInfo.name}");
+photo.setAttribute("alt", `Picture of ${myInfo.name}`);
 // Step 4: For each favorite food in the favoriteFoods property, create an HTML <li> element and place its value in the <li> element
 myInfo.favoriteFoods.forEach(food => {
     let li = document.createElement("li");
