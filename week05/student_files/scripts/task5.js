@@ -79,10 +79,10 @@ const output = (listTemple) => {
         img.setAttribute('alt', temple.templeName);
         pic.appendChild(img);
 // - Appends the <h3> element, the two <h4> elements, and the <img> element to the <article> element as children
-        article.append(templeName);
-        article.append(tLocation);
-        article.append(tDedicated);
-        article.append(pic);
+        article.appendChild(templeName);
+        article.appendChild(tLocation);
+        article.appendChild(tDedicated);
+        article.appendChild(pic);
 // - Appends the <article> element to the HTML element with an ID of temples
         document.querySelector("#temples").appendChild(article);
     });
@@ -90,18 +90,17 @@ const output = (listTemple) => {
 // Step 3: Create another function called getTemples. Make it an async function.    
 // Step 5: Convert your fetch response into a Javascript object ( hint: .json() ). Store this in the templeList variable you declared earlier (Step 1). Make sure the the execution of the code waits here as well until it finishes.
 // Step 6: Finally, call the output function and pass it the list of temples. Execute your getTemples function to make sure it works correctly.
-async function getTemples() {
-    const url = "https://byui-cse.github.io/cse121b-course/week05/temples.json";
-    const response = await fetch(url);
-        if (response.ok) {
-            listTemple = await response.json();
-            output(listTemple);
-    }
+const getTemples = async () => {
+    const response = await fetch (
+        'https://byui-cse.github.io/cse121b-course/week05/temples.json'
+        );
+    listTemple = await response.json();
+    output(listTemple);
 };
 getTemples();
 // Step 7: Declare a function named reset that clears all of the <article> elements from the HTML element with an ID of temples
-function reset(){
-    document.querySelector("#temples").innerHTML = "";
+const reset = () => {
+    document.getElementById('temples').innerHTML = '';
 };
 
 // Step 9: Add a change event listener to the HTML element with an ID of sortBy that calls the sortBy function
@@ -132,19 +131,17 @@ const sortBy = () => {
                 })
             );
             break;
-        // case "2000":
-        //     output(listTemple.filter(temple => temple.tDedicated.substr(temple.dedicated.length - 4, 4) < filter));
-        //     break;
         default:
-            output(listTemple.sort((temple1, temple2) => temple1.templeName.toLowerCase() > temple2.templeName.toLowerCase() 
-            ? 1
-            : temple2.templeName.toLowerCase() > 
-              temple1.templeName.toLowerCase()
-            ? -1
-            : 0
-            )
+            output(
+                listTemple.sort((temple1, temple2) =>
+                    temple1.templeName.toLowerCase() > temple2.templeName.toLowerCase()
+                    ? 1
+                    : temple2.templeName.toLowerCase() > temple1.templeName.toLowerCase()
+                    ? -1
+                    : 0
+                )
             );
-        break;
+            break;
             
     }
 };
