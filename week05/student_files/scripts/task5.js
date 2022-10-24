@@ -68,10 +68,10 @@ const output = (listTemple) => {
         templeName.textContent = temple.templeName;
 // - Creates an HTML <h4> element and add the temple's location property to it
         const tLocation = document.createElement('h4');
-        tLocation.textContent = temple.tLocation;
+        tLocation.textContent = temple.location;
 // - Creates an HTML <h4> element and add the temple's dedicated property to it
         const tDedicated = document.createElement('h4');
-        tDedicated.textContent = temple.tDedicated;
+        tDedicated.textContent = temple.dedicated;
 // - Creates an HTML <img> element and add the temple's imageUrl property to the src attribute and the temple's templeName property to the alt attribute
         const pic = document.createElement('picture');
         const img = document.createElement('img');
@@ -120,13 +120,13 @@ const sortBy = () => {
                 })
             );
             break;
-        case "templeNameAscending":
+        case "templeNameDescending":
             output(
                 listTemple.sort((temple1, temple2) => {
                     let templeName1 = temple1.templeName.toLowerCase();
                     let templeName2 = temple2.templeName.toLowerCase();
-                    if (templeName1 < templeName2) return -1;
-                    else if (templeName1 > templeName2) return 1;
+                    if (templeName1 > templeName2) return -1;
+                    else if (templeName1 < templeName2) return 1;
                     else return 0;
                 })
             );
