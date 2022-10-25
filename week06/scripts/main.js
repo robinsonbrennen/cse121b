@@ -6,7 +6,7 @@ function getInput() {
     const inputValue = inputElement.value;
 
     // Call the API
-    const url = "https://age-of-empires-2-api.herokuapp.com/api/v1/units/";
+    const url = "https://age-of-empires-2-api.herokuapp.com/api/v1/resources/units/";
     const getInfo = async () => {
         // Find the information in API
         const response = await fetch(url + inputValue);
