@@ -11,8 +11,8 @@ const getInput = () => {
         const response = await fetch('../units.json');
         if (response.ok) {
             const result = await response.json();
-            console.log(result);
-            const unit = result.filter(x => inputValue.toLowerCase() = x.name.toLowerCase);
+            console.log(result.units[0].name);
+            const unit = result.units.filter(x => inputValue.toLowerCase() == x.name.toLowerCase());
             displayResults(unit);
         };
     };
@@ -27,19 +27,19 @@ const displayResults = (result) => {
     const article = document.createElement("article");
     
     const unitName = document.createElement("h3");
-    unitName.textContent = result.units.name;
+    unitName.textContent = result.name;
     
 
     const unitDescription = document.createElement("h4");
-    unitDescription.textContent = result.units.description;
+    unitDescription.textContent = result.description;
     
 
     const unitHitPoints = document.createElement("h4");
-    unitHitPoints.textContent = result.units.hit_points;
+    unitHitPoints.textContent = result.hit_points;
     
 
     const unitAttack = document.createElement("h4");
-    unitAttack.textContent = result.units.attack;
+    unitAttack.textContent = result.attack;
     
 
     article.appendChild(unitName);
@@ -51,8 +51,5 @@ const displayResults = (result) => {
 };
 
 const reset = () => {
-    document.querySelector("#name").innerHTML = "";
-    document.querySelector("#description").innerHTML = "";
-    document.querySelector("#hit-points").innerHTML = "";
-    document.querySelector("#attack").innerHTML = "";
+    document.querySelector("#output").innerHTML = "";
 };
