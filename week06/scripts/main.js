@@ -1,49 +1,58 @@
 // Get Input
+// const url = ;
+const inputElement = document.getElementById("input");
 const element = document.getElementById("search");
 
-function getInput() {
-    const inputElement = document.getElementById("input");
+const getInput = () => {
     const inputValue = inputElement.value;
-
     // Call the API
-    const url = "https://age-of-empires-2-api.herokuapp.com/api/v1/resources/units/";
     const getInfo = async () => {
         // Find the information in API
-        const response = await fetch(url + inputValue);
+        const response = await fetch('../units.json');
         if (response.ok) {
             const result = await response.json();
-            displayResults(result);
+            console.log(result);
+            const unit = result.filter(x => inputValue.toLowerCase() = x.name.toLowerCase);
+            displayResults(unit);
         };
     };
     getInfo();
-}
-element.addEventListener("click", getInput)
+};
+element.addEventListener("click", getInput);
 
 // Display results to the user: units name, description, hit_points, and attack
-function displayResults(result) {
+const displayResults = (result) => {
     reset();
-    console.log(result);
     
-    const unitName = document.getElementById("name")
-    let name = document.createTextNode(result.civilizations.name)
-    unitName.appendChild(name)
+    const article = document.createElement("article");
+    
+    const unitName = document.createElement("h3");
+    unitName.textContent = result.units.name;
+    
 
-    const unitDescription = document.getElementById("description")
-    let description = document.createTextNode(result.data.description)
-    unitDescription.appendChild(description)
+    const unitDescription = document.createElement("h4");
+    unitDescription.textContent = result.units.description;
+    
 
-    const unitHitPoints = document.getElementById("hit-points")
-    let hitPoints = document.createTextNode(result.data.hit_points)
-    unitHitPoints.appendChild(hitPoints)
+    const unitHitPoints = document.createElement("h4");
+    unitHitPoints.textContent = result.units.hit_points;
+    
 
-    const unitAttack = document.getElementById("attack")
-    let attack = document.createTextNode(result.data.attack)
-    unitAttack.appendChild(attack)
-}
+    const unitAttack = document.createElement("h4");
+    unitAttack.textContent = result.units.attack;
+    
+
+    article.appendChild(unitName);
+    article.appendChild(unitDescription);
+    article.appendChild(unitHitPoints);
+    article.appendChild(unitAttack);
+
+    document.querySelector("#output").appendChild(article);
+};
 
 const reset = () => {
     document.querySelector("#name").innerHTML = "";
     document.querySelector("#description").innerHTML = "";
     document.querySelector("#hit-points").innerHTML = "";
     document.querySelector("#attack").innerHTML = "";
-}
+};
